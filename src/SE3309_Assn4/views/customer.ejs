@@ -1,0 +1,51 @@
+<% include header.ejs %>
+<link rel="stylesheet" href="/styles/style.css">
+<link rel="stylesheet" href="/styles/styles2.css">
+<h1 class="AdminText">USER INFORMATION</h1>
+<div class="table-wrapper">
+  <% if (customers.length > 0) {%>
+    <div class="button_cont" align="right"><a class="example_f" href="/thanks"" rel="nofollow"><span>Logout</a></div>
+    <table class="table table-hovered">
+            <%if (button) { %>
+                <div id="button1" class="button_cont" align="left" ><a class="example_f" href="/viewReceipt/<%=customers[0].username %>" rel="nofollow"><span>View Receipt</a></div>
+            <% } %>
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Personal Info</th>
+        <th scope="col">Password</th>
+        <th scope="col">Wallet Password</th>
+        <th scope="col">Purchase History</th>
+        <th scope="col">Rewards Points</th>
+        <th scope="col"></th>
+    
+      </tr>
+      </thead>
+      <tbody>
+      <% customers.forEach((customer, index) => { %>
+        <tr>
+          <th scope="row"><%= customer.username %></th>
+
+          <td><%= customer.customerName %></td>
+          <td><%= customer.personalInfo %></td>
+          <td><%= customer.customerPassword%></td>
+          <td><%=customer.walletPassword%></td>
+          <td><%=customer.purchaseHistory%></td>
+          <td><%=customer.rewardPoints%></td>
+
+          <td>
+                <%if (button1) { %>
+                    <div class="button_cont" align="center"><a class="example_f" href="/cashRewards/<%=customer.username %>" rel="nofollow"><span>Cash Rewards</a></div></td>
+                 <% } %>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p class="text-center">No players found. Go <a href="/add" >here</a> to add players.</p>
+  <% } %>
+</div>
+</div>
+</body>
+</html>

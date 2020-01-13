@@ -1,0 +1,41 @@
+<% include header.ejs %>
+<link rel="stylesheet" href="/styles/style.css">
+<link rel="stylesheet" href="/styles/styles2.css">
+<body>
+  <h1 class="AdminText">CITY RESET REWARD POINTS</h1>
+
+  <div class="table-wrapper">
+    <div class="button_cont" align="left"><a class="example_f" href="/thanks"" rel="nofollow"><span>Logout</a></div>
+    <!--dropdown box -->
+
+
+  <% if (customers.length > 0) {%>
+    <table class="table table-hovered">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">City</th>
+        <th scope="col">Reward Points</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% customers.forEach((customer, index) => { %>
+        <tr>
+          <th scope="row"><%= customer.username %></th>
+
+          <td><%= customer.customerName %></td>
+          <td><%= customer.city%></td>
+          <td><%=customer.rewardPoints%></td>
+        
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p class="text-center">No players found. Go <a href="/add" >here</a> to add players.</p>
+  <% } %>
+</div>
+</div>
+</body>
+</html>

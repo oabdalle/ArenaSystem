@@ -1,0 +1,70 @@
+<% include header.ejs %>
+<link rel="stylesheet" href="/styles/style.css">
+<link rel="stylesheet" href="/styles/styles2.css">
+<body>
+  <h1 class="AdminText">ADMIN</h1>
+
+  <div class="table-wrapper">
+    <div class="button_cont" align="left"><a class="example_f" href="/thanks"" rel="nofollow"><span>Logout</a></div>
+    <!--dropdown box -->
+    <center>
+      
+
+        <div class="cityclass">
+          <form action="/cityUpdated/" method="GET">
+
+              <select class="selectpicker" name="selectpicker">
+                <option value="0">Select a City</option>
+                <option value="Cobfigavu">Cobfigavu</option>
+                <option value="Dovaus">Dovaus</option>
+                <option value="Boaspun">Boaspun</option>
+              </select> 
+            <input type="submit" value="Submit" class="btn btn-primary btn-block btn-large"/>
+            </form>
+          </div>
+          <!-- <div id="button11" class="button_cont"><a class="example_f" href="add-website-here" rel="nofollow"><span>Submit</a></div> -->
+
+          <br>
+          <br>
+         
+  
+  </center>
+
+    <div id="button1" class="button_cont" align="right"><a class="example_f" href="/expiry" rel="nofollow"><span>Fix Expiry</a></div>
+  <% if (customers.length > 0) {%>
+    <table class="table table-hovered">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col" class="data">Personal Info</th>
+        <th scope="col">Password</th>
+        <th scope="col">Wallet Password</th>
+        <th scope="col">Purchase Historyr</th>
+        <th scope="col">Rewards Points</th>
+        <th scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% customers.forEach((customer, index) => { %>
+        <tr>
+          <th scope="row"><%= customer.username %></th>
+
+          <td><%= customer.customerName %></td>
+          <td><div  class="data"><%= customer.personalInfo %></div>  </td>
+          <td><%= customer.customerPassword%></td>
+          <td><%=customer.walletPassword%></td>
+          <td><%=customer.purchaseHistory%></td>
+          <td><%=customer.rewardPoints%></td>
+        
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p class="text-center">No players found. Go <a href="/add" >here</a> to add players.</p>
+  <% } %>
+</div>
+</div>
+</body>
+</html>
